@@ -85,10 +85,11 @@ int main(int argc, char **argv)
 
 * MATLAB
 
-To test LSD algorithm with MATLAB, run ./matlab/x64(x86)/lsd_example.m and ./matlab/x64(x86)/lsd2_example.m, if your platform is x86, you should compile the corresponding .mexw32 files by Cmake.
+To test LSD algorithm with MATLAB, run ./matlab/x64(x86)/lsd-example.m and ./matlab/x64(x86)/lsd2-example.m, if your platform is x86, you should compile the corresponding .mexw32 files by Cmake.
+
 
 ```matlab
-% lsd_example.m
+% lsd-example.m
 % Test LSD algorithm with MATLAB
 %% show the image.
 im = imread('./images/test.jpg');
@@ -104,23 +105,7 @@ end
 ```
 
 ```matlab
-% lsd_example.m
-% Test LSD algorithm with MATLAB
-%% show the image.
-im = imread('./images/test.jpg');
-imshow(im);
-%% get the start_points and end_points of each straight line use LSD.
-% note: input parameter is the path of image, use '/' as file separator.
-points = lsd('./images/test.jpg');
-%% plot the lines.
-hold on;
-for i = 1:size(points, 2)
-    plot(points(1:2, i), points(3:4, i),'LineWidth', 2, 'Color', [1, 0, 0]);
-end
-```
-
-```matlab
-% lsd2_example.m
+% lsd2-example.m
 % Test LSD algorithm with MATLAB
 %% show the image.
 im = imread('./images/test.jpg');
