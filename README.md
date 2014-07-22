@@ -13,7 +13,7 @@ LSD is written by C++. And it also can be easily used in many contexts through t
 
 If you want to test or contribute, [CMAKE](http://www.cmake.org), a cross-platform, open-source build system, is usded to build some tools for the purpose. CMake can be downloaded from [CMake' website](http://www.cmake.org/cmake/resources/software.html)
 
-The compilation rely on [OpenCV](http://www.opencv.org) - A cross-platform open source computer vision library.
+The compilation rely on [OpenCV](http://opencv.org) - A cross-platform open source computer vision library.
 
 During compilation, create a new directory named "build" in the main directory, then choose a appropriate compiler and switch to the "build" directory, finally, execute the following command according to your machine:
 
