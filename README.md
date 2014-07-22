@@ -85,11 +85,11 @@ int main(int argc, char **argv)
 
 * MATLAB
 
-To test LSD algorithm with MATLAB, run ./matlab/x64(x86)/lsd-example.m and ./matlab/x64(x86)/lsd2-example.m, if your platform is x86, you should compile the corresponding .mexw32 files by Cmake.
+To test LSD algorithm with MATLAB, run ./matlab/x64(x86)/lsd_example.m and ./matlab/x64(x86)/lsd2_example.m, if your platform is x86, you should compile the corresponding .mexw32 files by Cmake.
 
 
 ```matlab
-% lsd-example.m
+% lsd_example.m
 % Test LSD algorithm with MATLAB
 %% show the image.
 im = imread('./images/test.jpg');
@@ -105,7 +105,7 @@ end
 ```
 
 ```matlab
-% lsd2-example.m
+% lsd2_example.m
 % Test LSD algorithm with MATLAB
 %% show the image.
 im = imread('./images/test.jpg');
