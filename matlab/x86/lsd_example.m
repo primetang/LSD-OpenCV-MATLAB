@@ -1,3 +1,5 @@
+% lsd2_example.m
+% Test LSD algorithm with MATLAB
 %% show the image.
 im = imread('./images/test.jpg');
 imshow(im);
