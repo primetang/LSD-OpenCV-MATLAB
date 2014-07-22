@@ -33,7 +33,7 @@ make
 
 ###Usage
 
-* OpenCV
+* C++/OpenCV
 
 To test LSD algorithm with OpenCV, run ./build/lsd_opencv_example.exe after compilation.
 
