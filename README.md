@@ -1,4 +1,4 @@
-LSD-MATLAB : Line Segment Detector use OpenCV and MATLAB
+LSD-MATLAB: Line Segment Detector use OpenCV and MATLAB
 ========================================================
 
 ###Introduction
