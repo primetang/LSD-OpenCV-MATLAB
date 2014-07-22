@@ -37,7 +37,7 @@ make
 
 * C++/OpenCV
 
-To test LSD algorithm with OpenCV, run ./build/lsd_opencv_example.exe after compilation.
+To test LSD algorithm with OpenCV, run "./build/lsd_opencv_example.exe" after compilation.
 
 ```cpp
 /**
@@ -87,7 +87,7 @@ int main(int argc, char **argv)
 
 * MATLAB
 
-To test LSD algorithm with MATLAB, run ./matlab/x64(x86)/lsd_example.m and ./matlab/x64(x86)/lsd2_example.m, if your platform is x86, you should compile the corresponding .mexw32 files by Cmake.
+To test LSD algorithm with MATLAB, run "./matlab/x64(x86)/lsd_example.m" and "./matlab/x64(x86)/lsd2_example.m", if your platform is x86, you should compile the corresponding .mexw32 files by Cmake.
 
 
 ```matlab
