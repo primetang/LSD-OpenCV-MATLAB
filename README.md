@@ -11,7 +11,7 @@ LSD-OpenCV-MATLAB is a port of Line Segment Detector(LSD) for OpenCV and MATLAB,
 
 LSD is written by C++. And it also can be easily used in many contexts through the MATLAB bindings provided with this toolbox.
 
-If you want to test or contribute, [CMAKE](http://www.cmake.org), a cross-platform, open-source build system, is usded to build some tools for the purpose. CMake can be downloaded from [CMake' website](http://www.cmake.org/cmake/resources/software.html)
+If you want to test or contribute, [CMAKE](http://www.cmake.org), a cross-platform, open-source build system, is usded to build some tools for the purpose. CMake can be downloaded from [CMake' website](http://www.cmake.org/cmake/resources/software.html).
 
 The compilation rely on [OpenCV](http://opencv.org) - A cross-platform open source computer vision library.
 
