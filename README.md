@@ -31,6 +31,8 @@ cmake ..
 make
 ```
 
+If successful, this should create two files named lsd.xxx and lsd_image.xxx in "./build/matlab/", where xxx is a suffix that depends on what machine you are on.
+
 ###Usage
 
 * C++/OpenCV
