@@ -15,7 +15,7 @@ If you want to test or contribute, [CMAKE](http://www.cmake.org), a cross-platfo
 
 The compilation rely on [OpenCV](http://opencv.org) - A cross-platform open source computer vision library.
 
-During compilation, create a new directory named "build" in the main directory, then choose a appropriate compiler and switch to the "build" directory, finally, execute the following command according to your machine:
+During compilation, create a new directory named `build` in the main directory, then choose a appropriate compiler and switch to the `build` directory, finally, execute the following command according to your machine:
 
 * Windows
 
@@ -31,13 +31,13 @@ cmake ..
 make
 ```
 
-If successful, this should create two files named lsd.xxx and lsd_image.xxx in "./build/matlab/", where xxx is a suffix that depends on what machine you are on.
+If successful, this should create two files named lsd.xxx and lsd_image.xxx in `./build/matlab/`, where xxx is a suffix that depends on what machine you are on.
 
 ###Usage
 
 * C++/OpenCV
 
-To test LSD algorithm with OpenCV, run "./build/lsd_opencv_example.exe" after compilation.
+To test LSD algorithm with OpenCV, run `./build/lsd_opencv_example.exe` after compilation.
 
 ```cpp
 /**
@@ -87,7 +87,7 @@ int main(int argc, char **argv)
 
 * MATLAB
 
-To test LSD algorithm with MATLAB, run "./matlab/x64(x86)/lsd_example.m" and "./matlab/x64(x86)/lsd2_example.m", if your platform is x86, you should compile the corresponding .mexw32 files by Cmake.
+To test LSD algorithm with MATLAB, run `./matlab/x64(x86)/lsd_example.m` and `./matlab/x64(x86)/lsd2_example.m`, if your platform is x86, you should compile the corresponding .mexw32 files by Cmake.
 
 
 ```matlab
