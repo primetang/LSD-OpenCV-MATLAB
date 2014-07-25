@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>lsd-opencv-matlab by primetang</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>lsd-opencv-matlab</h1>
+          <h2>Line Segment Detector for OpenCV and MATLAB</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/primetang/LSD-OpenCV-MATLAB/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/primetang/LSD-OpenCV-MATLAB/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/primetang/LSD-OpenCV-MATLAB" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h3>
+<a name="1-introduction" class="anchor" href="#1-introduction"><span class="octicon octicon-link"></span></a>1. Introduction</h3>
+
+<p>LSD-OpenCV-MATLAB is toolbox of Line Segment Detector(LSD) for OpenCV and MATLAB, as part of the GSoC 2013 program. The original code and paper, developed by Rafael Grompone von Gioi, can be found at <a href="http://www.ipol.im/pub/art/2012/gjmr-lsd/">http://www.ipol.im/pub/art/2012/gjmr-lsd/</a>.</p>
+
+<p>Please feel free to contact me [<a href="mailto:tanggefu@gmail.com">tanggefu@gmail.com</a>] if you have any questions.</p>
+
+<h3>
+<a name="2-compilation" class="anchor" href="#2-compilation"><span class="octicon octicon-link"></span></a>2. Compilation</h3>
+
+<p>LSD is written by C++. And it also can be easily used in many contexts through the MATLAB bindings provided with this toolbox.</p>
+
+<p>If you want to test or contribute, <a href="http://www.cmake.org">CMAKE</a>, a cross-platform, open-source build system, is usded to build some tools for the purpose. CMake can be downloaded from <a href="http://www.cmake.org/cmake/resources/software.html">CMake' website</a>.</p>
+
+<p>The compilation rely on <a href="http://opencv.org">OpenCV</a> - A cross-platform open source computer vision library.</p>
+
+<p>During compilation, create a new directory named <code>build</code> in the main directory, then choose a appropriate compiler and switch to the <code>build</code> directory, finally, execute the following command according to your machine:</p>
+
+<ul>
+<li>Windows</li>
+</ul><div class="highlight highlight-cpp"><pre><span class="n">cmake</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> <span class="p">..</span> <span class="o">-</span><span class="n">G</span><span class="s">"NMake Makefiles"</span>
+<span class="n">nmake</span>
+</pre></div>
+
+<ul>
+<li>Linux</li>
+</ul><div class="highlight highlight-cpp"><pre><span class="n">cmake</span> <span class="p">..</span>
+<span class="n">make</span>
+</pre></div>
+
+<p>If successful, this should create two files named lsd.xxx and lsd_image.xxx in <code>./build/matlab/</code>, where xxx is a suffix that depends on what machine you are on.</p>
+
+<h3>
+<a name="3-usage" class="anchor" href="#3-usage"><span class="octicon octicon-link"></span></a>3. Usage</h3>
+
+<ul>
+<li>C++/OpenCV</li>
+</ul><p>To test LSD algorithm with OpenCV, run <code>./build/lsd_opencv_example.exe</code> after compilation.</p>
+
+<div class="highlight highlight-cpp"><pre><span class="cm">/**</span>
+<span class="cm"> * @file lsd_opencv_example.cpp</span>
+<span class="cm"> *</span>
+<span class="cm"> * Test the LSD algorithm with OpenCV</span>
+<span class="cm"> */</span>
+<span class="cp">#include &lt;highgui.h&gt;</span>
+<span class="cp">#include &lt;cv.h&gt;</span>
+<span class="cp">#include &lt;lsd.h&gt;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="n">src</span> <span class="o">=</span> <span class="n">cv</span><span class="o">::</span><span class="n">imread</span><span class="p">(</span><span class="s">"./../../images/test.jpg"</span><span class="p">,</span> <span class="n">CV_LOAD_IMAGE_COLOR</span><span class="p">);</span>
+    <span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">src_gray</span><span class="p">;</span>
+    <span class="n">cv</span><span class="o">::</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">CV_RGB2GRAY</span><span class="p">);</span>
+    <span class="n">tmp</span><span class="p">.</span><span class="n">convertTo</span><span class="p">(</span><span class="n">src_gray</span><span class="p">,</span> <span class="n">CV_64FC1</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="n">cols</span>  <span class="o">=</span> <span class="n">src_gray</span><span class="p">.</span><span class="n">cols</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">src_gray</span><span class="p">.</span><span class="n">rows</span><span class="p">;</span>
+
+    <span class="n">image_double</span> <span class="n">image</span> <span class="o">=</span> <span class="n">new_image_double</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span> <span class="n">rows</span><span class="p">);</span>
+    <span class="n">image</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">=</span> <span class="n">src_gray</span><span class="p">.</span><span class="n">ptr</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">ntuple_list</span> <span class="n">ntl</span> <span class="o">=</span> <span class="n">lsd</span><span class="p">(</span><span class="n">image</span><span class="p">);</span>
+
+    <span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="n">lsd</span> <span class="o">=</span> <span class="n">cv</span><span class="o">::</span><span class="n">Mat</span><span class="o">::</span><span class="n">zeros</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">CV_8UC1</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">!=</span> <span class="n">ntl</span><span class="o">-&gt;</span><span class="n">size</span> <span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">cv</span><span class="o">::</span><span class="n">Point</span> <span class="n">pt1</span><span class="p">,</span> <span class="n">pt2</span><span class="p">;</span>
+        <span class="n">pt1</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">ntl</span><span class="o">-&gt;</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span> <span class="o">+</span> <span class="n">j</span> <span class="o">*</span> <span class="n">ntl</span><span class="o">-&gt;</span><span class="n">dim</span><span class="p">];</span>
+        <span class="n">pt1</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">ntl</span><span class="o">-&gt;</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span> <span class="o">+</span> <span class="n">j</span> <span class="o">*</span> <span class="n">ntl</span><span class="o">-&gt;</span><span class="n">dim</span><span class="p">];</span>
+        <span class="n">pt2</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">ntl</span><span class="o">-&gt;</span><span class="n">values</span><span class="p">[</span><span class="mi">2</span> <span class="o">+</span> <span class="n">j</span> <span class="o">*</span> <span class="n">ntl</span><span class="o">-&gt;</span><span class="n">dim</span><span class="p">];</span>
+        <span class="n">pt2</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">ntl</span><span class="o">-&gt;</span><span class="n">values</span><span class="p">[</span><span class="mi">3</span> <span class="o">+</span> <span class="n">j</span> <span class="o">*</span> <span class="n">ntl</span><span class="o">-&gt;</span><span class="n">dim</span><span class="p">];</span>
+        <span class="n">cv</span><span class="o">::</span><span class="n">line</span><span class="p">(</span><span class="n">lsd</span><span class="p">,</span> <span class="n">pt1</span><span class="p">,</span> <span class="n">pt2</span><span class="p">,</span> <span class="n">cv</span><span class="o">::</span><span class="n">Scalar</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">CV_AA</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">free_ntuple_list</span><span class="p">(</span><span class="n">ntl</span><span class="p">);</span>
+
+    <span class="n">cv</span><span class="o">::</span><span class="n">namedWindow</span><span class="p">(</span><span class="s">"src"</span><span class="p">,</span> <span class="n">CV_WINDOW_AUTOSIZE</span><span class="p">);</span>
+    <span class="n">cv</span><span class="o">::</span><span class="n">imshow</span><span class="p">(</span><span class="s">"src"</span><span class="p">,</span> <span class="n">src</span><span class="p">);</span>
+    <span class="n">cv</span><span class="o">::</span><span class="n">namedWindow</span><span class="p">(</span><span class="s">"lsd"</span><span class="p">,</span> <span class="n">CV_WINDOW_AUTOSIZE</span><span class="p">);</span>
+    <span class="n">cv</span><span class="o">::</span><span class="n">imshow</span><span class="p">(</span><span class="s">"lsd"</span><span class="p">,</span> <span class="n">lsd</span><span class="p">);</span>
+    <span class="n">cv</span><span class="o">::</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">cv</span><span class="o">::</span><span class="n">destroyAllWindows</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>MATLAB</li>
+</ul><p>To test LSD algorithm with MATLAB, run <code>./matlab/x64(x86)/lsd_example.m</code> and <code>./matlab/x64(x86)/lsd2_example.m</code>, if your platform is x86, you should compile the corresponding <code>xxx.mexw32</code> files by Cmake.</p>
+
+<div class="highlight highlight-matlab"><pre><span class="c">% lsd_example.m</span>
+<span class="c">% Test LSD algorithm with MATLAB</span>
+<span class="c">%% show the image.</span>
+<span class="n">im</span> <span class="p">=</span> <span class="n">imread</span><span class="p">(</span><span class="s">'./images/test.jpg'</span><span class="p">);</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">);</span>
+<span class="c">%% get the start_points and end_points of each straight line use LSD.</span>
+<span class="c">% note: input parameter is the path of image, use '/' as file separator.</span>
+<span class="n">points</span> <span class="p">=</span> <span class="n">lsd</span><span class="p">(</span><span class="s">'./images/test.jpg'</span><span class="p">);</span>
+<span class="c">%% plot the lines.</span>
+<span class="n">hold</span> <span class="n">on</span><span class="p">;</span>
+<span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">size</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">points</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="nb">i</span><span class="p">),</span> <span class="n">points</span><span class="p">(</span><span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="nb">i</span><span class="p">),</span><span class="s">'LineWidth'</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">'Color'</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]);</span>
+<span class="k">end</span>
+</pre></div>
+
+<div class="highlight highlight-matlab"><pre><span class="c">% lsd2_example.m</span>
+<span class="c">% Test LSD algorithm with MATLAB</span>
+<span class="c">%% show the image.</span>
+<span class="n">im</span> <span class="p">=</span> <span class="n">imread</span><span class="p">(</span><span class="s">'./images/test.jpg'</span><span class="p">);</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">);</span>
+<span class="c">%% show the binary image after the process of LSD.</span>
+<span class="c">% note: input parameter is the path of image, use '/' as file separator.</span>
+<span class="n">figure</span><span class="p">;</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">lsd2</span><span class="p">(</span><span class="s">'./images/test.jpg'</span><span class="p">));</span>
+</pre></div>
+        </section>
+
+        <footer>
+          lsd-opencv-matlab is maintained by <a href="https://github.com/primetang">primetang</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
