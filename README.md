@@ -118,3 +118,5 @@ imshow(im);
 figure;
 imshow(lsd2('./images/test.jpg'));
 ```
+
+![](https://github.com/primetang/LSD-OpenCV-MATLAB/tree/master/images/test.jpg)
