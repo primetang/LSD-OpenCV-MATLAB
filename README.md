@@ -121,8 +121,8 @@ imshow(lsd2('./images/test.jpg'));
 
 ####This is an example:
 
-```source```
+source
 ![](https://github.com/primetang/LSD-OpenCV-MATLAB/blob/master/images/test.jpg "source")
 
-```result```
+result
 ![](https://github.com/primetang/LSD-OpenCV-MATLAB/blob/master/images/result.jpg "result")
