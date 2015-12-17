@@ -18,14 +18,13 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     ntuple_list ntl = lsd(image);
     cv::Mat lsd = cv::Mat::zeros(image->ysize, image->xsize, CV_8UC1);
     cv::Point pt1, pt2;
-    double width;
     for (int j = 0; j != ntl->size ; ++j)
     {
         pt1.x = ntl->values[0 + j * ntl->dim];
         pt1.y = ntl->values[1 + j * ntl->dim];
         pt2.x = ntl->values[2 + j * ntl->dim];
         pt2.y = ntl->values[3 + j * ntl->dim];
-        width = ntl->values[4 + j * ntl->dim];
+        double width = ntl->values[4 + j * ntl->dim];
         cv::line(lsd, pt1, pt2, cv::Scalar(255), width, CV_AA);
     }
     free_ntuple_list(ntl);

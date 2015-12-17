@@ -65,15 +65,15 @@ int main(int argc, char **argv)
     ntuple_list ntl = lsd(image);
 
     cv::Mat lsd = cv::Mat::zeros(rows, cols, CV_8UC1);
-
+    cv::Point pt1, pt2;
     for (int j = 0; j != ntl->size ; ++j)
     {
-        cv::Point pt1, pt2;
         pt1.x = ntl->values[0 + j * ntl->dim];
         pt1.y = ntl->values[1 + j * ntl->dim];
         pt2.x = ntl->values[2 + j * ntl->dim];
         pt2.y = ntl->values[3 + j * ntl->dim];
-        cv::line(lsd, pt1, pt2, cv::Scalar(255), 1, CV_AA);
+        double width = ntl->values[4 + j * ntl->dim];
+        cv::line(lsd, pt1, pt2, cv::Scalar(255), width, CV_AA);
     }
     free_ntuple_list(ntl);
 
@@ -103,7 +103,7 @@ points = lsd('./images/test.jpg');
 %% plot the lines.
 hold on;
 for i = 1:size(points, 2)
-    plot(points(1:2, i), points(3:4, i), 'LineWidth', 2, 'Color', [1, 0, 0]);
+    plot(points(1:2, i), points(3:4, i), 'LineWidth', points(5, i) / 2, 'Color', [1, 0, 0]);
 end
 ```
 

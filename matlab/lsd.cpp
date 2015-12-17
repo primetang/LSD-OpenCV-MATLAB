@@ -26,6 +26,6 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
         pos_mat[5 * j + 2] = ntl->values[1 + j * ntl->dim] + 1;
         pos_mat[5 * j + 1] = ntl->values[2 + j * ntl->dim] + 1;
         pos_mat[5 * j + 3] = ntl->values[3 + j * ntl->dim] + 1;
-        pos_mat[5 * j + 4] = ntl->values[4 + j * ntl->dim];
+        pos_mat[5 * j + 4] = ntl->values[4 + j * ntl->dim]; // width
     }
 }
