@@ -6,10 +6,16 @@
 #include <highgui.h>
 #include <cv.h>
 #include <lsd.h>
+#include <iostream>
 
 int main(int argc, char **argv)
 {
-    cv::Mat src = cv::imread("./../../images/test.jpg", CV_LOAD_IMAGE_COLOR);
+    if (argc < 2 || argc > 2)
+    {
+        std::cout << "Usage: lsd_opencv_example imageName" << std::endl;
+        return;
+    }
+    cv::Mat src = cv::imread(argv[1], CV_LOAD_IMAGE_COLOR);
     cv::Mat tmp, src_gray;
     cv::cvtColor(src, tmp, CV_RGB2GRAY);
     tmp.convertTo(src_gray, CV_64FC1);
