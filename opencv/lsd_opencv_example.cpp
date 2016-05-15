@@ -13,7 +13,7 @@ int main(int argc, char **argv)
     if (argc < 2 || argc > 2)
     {
         std::cout << "Usage: lsd_opencv_example imageName" << std::endl;
-        return;
+        return -1;
     }
     cv::Mat src = cv::imread(argv[1], CV_LOAD_IMAGE_COLOR);
     cv::Mat tmp, src_gray;
@@ -31,11 +31,11 @@ int main(int argc, char **argv)
     cv::Point pt1, pt2;
     for (int j = 0; j != ntl->size ; ++j)
     {
-        pt1.x = ntl->values[0 + j * ntl->dim];
-        pt1.y = ntl->values[1 + j * ntl->dim];
-        pt2.x = ntl->values[2 + j * ntl->dim];
-        pt2.y = ntl->values[3 + j * ntl->dim];
-        double width = ntl->values[4 + j * ntl->dim];
+        pt1.x = int(ntl->values[0 + j * ntl->dim]);
+        pt1.y = int(ntl->values[1 + j * ntl->dim]);
+        pt2.x = int(ntl->values[2 + j * ntl->dim]);
+        pt2.y = int(ntl->values[3 + j * ntl->dim]);
+        int width = int(ntl->values[4 + j * ntl->dim]);
         cv::line(lsd, pt1, pt2, cv::Scalar(255), width, CV_AA);
     }
     free_ntuple_list(ntl);
@@ -46,4 +46,5 @@ int main(int argc, char **argv)
     cv::imshow("lsd", lsd);
     cv::waitKey(0);
     cv::destroyAllWindows();
+    return 0;
 }
