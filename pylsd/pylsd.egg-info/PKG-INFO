@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: pylsd
+Version: 0.0.1
+Summary: pylsd is the python bindings for LSD - Line Segment Detector
+Home-page: https://github.com/primetang/pylsd
+Author: Gefu Tang
+Author-email: tanggefu@gmail.com
+License: BSD
+Description: UNKNOWN
+Keywords: LSD
+Platform: UNKNOWN

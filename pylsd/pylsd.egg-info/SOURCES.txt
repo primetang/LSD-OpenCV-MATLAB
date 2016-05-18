@@ -1,0 +1,12 @@
+setup.py
+pylsd/__init__.py
+pylsd/lsd.py
+pylsd.egg-info/PKG-INFO
+pylsd.egg-info/SOURCES.txt
+pylsd.egg-info/dependency_links.txt
+pylsd.egg-info/top_level.txt
+pylsd/bindings/__init__.py
+pylsd/bindings/lsd_ctypes.py
+pylsd/lib/darwin/liblsd.dylib
+pylsd/lib/linux/liblsd.so
+pylsd/lib/win32/x64/lsd.dll
