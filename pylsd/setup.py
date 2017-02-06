@@ -3,13 +3,12 @@
 # @Date    : 2015-12-19 02:09:53
 # @Author  : Gefu Tang (tanggefu@gmail.com)
 # @Link    : https://github.com/primetang/pylsd
-# @Version : 0.0.1
 
 from setuptools import setup
 
 setup(
     name='pylsd',
-    version='0.0.1',
+    version='0.0.2',
     description='pylsd is the python bindings for LSD - Line Segment Detector',
     author='Gefu Tang',
     author_email='tanggefu@gmail.com',

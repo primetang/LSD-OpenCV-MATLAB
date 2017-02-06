@@ -5,8 +5,6 @@ pylsd
 
 pylsd is the python bindings for [LSD - Line Segment Detector](http://www.ipol.im/pub/art/2012/gjmr-lsd/).
 
-#####Please feel free to contact me [tanggefu@gmail.com] if you have any questions.
-
 ###2. Install
 
 This package uses distutils, which is the default way of installing python modules. To install in your home directory, securely run the following:

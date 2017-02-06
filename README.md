@@ -4,9 +4,7 @@ LSD-OpenCV-MATLAB
 ------------------------------------------------
 
 ###1. Introduction
-LSD-OpenCV-MATLAB is toolbox of Line Segment Detector(LSD) for OpenCV and MATLAB, as part of the GSoC 2013 program. The original code and paper, developed by Rafael Grompone von Gioi, can be found at http://www.ipol.im/pub/art/2012/gjmr-lsd/.
-
-#####Please feel free to contact me [tanggefu@gmail.com] if you have any questions.
+LSD-OpenCV-MATLAB is toolbox of Line Segment Detector(LSD) for OpenCV and MATLAB, as part of the GSoC 2013 program. The original code and paper, developed by Rafael Grompone von Gioi, can be found at [here](http://www.ipol.im/pub/art/2012/gjmr-lsd/).
 
 ###2. Compilation
 
@@ -85,6 +83,10 @@ int main(int argc, char **argv)
     cv::destroyAllWindows();
 }
 ```
+
+* Python
+
+Please see [pylsd](https://github.com/primetang/LSD-OpenCV-MATLAB/tree/master/pylsd) for more details.
 
 * MATLAB
 
